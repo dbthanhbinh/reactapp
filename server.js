@@ -1,6 +1,10 @@
-var express = require('express');
+const express = require('express');
+const routes = require('./routers');
+const Api = require('./routers/api');
+
 var app = express();
 
-app.get('/', (req, res) => res.send('Hello World ddfsdf!'))
+app.get('/', routes);
+app.use('/api', Api);
 
 module.exports = app;
