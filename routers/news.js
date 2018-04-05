@@ -18,8 +18,7 @@ const fakeNews = [{
     body: 'This is some body text regarding the news story of the owl stealing a pork pie from a shop in swindon'
 }];
 
-router.get('/', function(req, res, next) {
-    console.log('fasdfas');
+router.get('/', function(req, res, next) {    
     res.status(200).send({
       data: fakeNews
     })
