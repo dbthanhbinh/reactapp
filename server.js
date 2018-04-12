@@ -1,10 +1,13 @@
 const express = require('express');
 const routes = require('./routers');
-const Api = require('./routers/api');
+const config = require('./config');
+const apiUri = config.api.name + '/' + config.api.version;
+const Api = require('./providers/' + apiUri);
 
 var app = express();
+
 app.get('/', routes);
 
-app.use('/api', Api);
+app.use('/' + apiUri, Api);
 
 module.exports = app;

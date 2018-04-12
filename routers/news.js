@@ -1,5 +1,9 @@
-const express = require('express')
-const router = express.Router()
+'use strict';
+
+const express = require('express');
+const router = express.Router();
+const model = require('../models').News;
+const newsCtr = require('../controller/news-controller');
 
 const fakeNews = [{
     id: '1',
