@@ -1,3 +1,8 @@
+var mongoose = require('mongoose');
+var db = mongoose.connection;
+
+console.log(db)
+
 class Base {
     constructor (model) {
         this.model = model;               
@@ -8,8 +13,8 @@ class Base {
     }
 	
 	findOne(){
-        return this.model;
-		// this.model.findOne({},function (err, data){        
+        //return this.model;
+		// db.findOne({},function (err, data){        
 		// 	if(err)
 		// 		return err;
 		// 	return JSON.stringify(data)
