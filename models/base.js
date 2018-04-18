@@ -1,25 +1,21 @@
-var mongoose = require('mongoose');
-var db = mongoose.connection;
-
-console.log(db)
-
-class Base {
+class BaseModel {
     constructor (model) {
         this.model = model;               
     }
-
-    test(){
-        return 'ffasdfasfd';
-    }
-	
+    find(){
+        this.model.find({}, function(err, users) {
+            if (err) {
+                return next(err);
+            }
+            else {
+                return users;
+            }
+        });
+        // return 'fasdfas';
+	}	
 	findOne(){
-        //return this.model;
-		// db.findOne({},function (err, data){        
-		// 	if(err)
-		// 		return err;
-		// 	return JSON.stringify(data)
-		// });
+        console.log('findOne')
 	}	
 };
 
-module.exports = Base;
+module.exports = BaseModel;
