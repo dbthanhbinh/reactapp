@@ -1,23 +1,17 @@
 'use strict';
-var userModel = require ('../models/user/schemas/User');
-var baseModel = require ('../models/base');
-var model = new baseModel(userModel);
-
-// console.log(newBase.find());
-
+var model = require ('../models/user');
 var userController = {};
 
 userController.list = function(req, res) {
-    console.log('user list');
-    model.find(params, callback);
-    // userModel.find({}, function(err, users) {
-    //     if (err) {
-    //         return next(err);
-    //     }
-    //     else {
-    //         res.json(users);
-    //     }
-    // });
+    model.find({}, function(err, data){        
+        res.json(data);
+    });    
+};
+
+userController.view = function(req, res){
+    model.findOne({}, function(err, data){        
+        res.json(data);
+    }); 
 };
 
 userController.delete = function(req, res) {

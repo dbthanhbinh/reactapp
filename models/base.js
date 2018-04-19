@@ -2,19 +2,17 @@ class BaseModel {
     constructor (model) {
         this.model = model;               
     }
-    find(){
-        this.model.find({}, function(err, users) {
-            if (err) {
-                return next(err);
-            }
-            else {
-                return users;
-            }
+
+    find({}, done){
+        this.model.find({}, function(err, data) {
+            return done(null, data);            
         });
-        // return 'fasdfas';
-	}	
-	findOne(){
-        console.log('findOne')
+    }
+    	
+	findOne({}, done){
+        this.model.findOne({}, function(err, data) {
+            return done(null, data);            
+        });
 	}	
 };
 

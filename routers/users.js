@@ -7,4 +7,6 @@ router.get('/', user.list);
 
 router.get('/delete', user.delete);
 
+router.get('/view', user.view);
+
 module.exports = router;
