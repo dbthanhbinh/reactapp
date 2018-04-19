@@ -1,8 +1,5 @@
-// const mongoose = require('../../../connecting');
-// const Schema = mongoose.Schema;
-
-const { Schema } = require('mongoose');
-//const Schema = mongoose.Schema;
+const mongoose = require('../../../connecting');
+const Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
     username: {
@@ -17,5 +14,4 @@ var UserSchema = new Schema({
     }    
 }, { collection: 'users' });
 
-// module.exports = mongoose.model('User', UserSchema);
-module.exports = UserSchema;
+module.exports = mongoose.model('User', UserSchema);
