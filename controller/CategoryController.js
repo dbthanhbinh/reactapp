@@ -1,10 +1,12 @@
 'use strict';
 var model = require ('../models/category');
+const userSchema = require('../models/category/schemas/Category');
+var resMessage = require('../providers/commons/resMessage');
 var categoryController = {};
 
 categoryController.list = function(req, res) {    
     model.find({}, function(err, data){        
-        res.json(data);
+        return res.send(resMessage.message(err, data));
     });    
 };
 
@@ -23,16 +25,8 @@ categoryController.create = function(req, res) {
         name: req.body.name, 
         description: req.body.description
     }
-    model.create(category, function(err, result){
-        if(err) {
-            console.log('Error', err);    
-            return;
-        }
-        console.log('fff', result);
-        return res.send(JSON.stringify({
-            status: 200,
-            message: 'success'
-        }));
+    model.create(category, function(err, data){
+        return res.send(resMessage.message(err, data));
     });    
 };
 

@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import HeaderCtr from '../../containers/header-ctr/index';
 import CategoryList from './category-list';
 import Modal from '../../containers/modals/index';
+import EntityService from '../../../core/services/index';
 
+console.log(EntityService)
 class Categories extends Component{
     constructor (props) {
         super(props);

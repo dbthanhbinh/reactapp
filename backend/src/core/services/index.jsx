@@ -6,14 +6,15 @@
     );
 
     function init(_, Entity){
-        class CreateRequest extends Entity {}
+        class CreateCategoryRequest extends Entity {}
+        Entity.defineEntity(CreateCategoryRequest, { __class: 'WPTodos.CreateCategoryRequest', willPersist: false })
 
-        class CreateResult extends Entity {}
+        class CreateCategoryResult extends Entity {}
 
         var serviceAPI = {};
         _.assign(serviceAPI, {
-            CreateRequest,
-            CreateResult
+            CreateCategoryRequest,
+            CreateCategoryResult
         });
 
         return serviceAPI
