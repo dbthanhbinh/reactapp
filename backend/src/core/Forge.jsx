@@ -20,6 +20,12 @@ var Forge = {
         if (options.id) {
             node.setAttribute('id', options.id)
         }
+        if (options.name) {
+            node.setAttribute('name', options.name)
+        } else if(options.id){
+            node.setAttribute('name', options.id)
+        }
+
         if (options.class) {
         node.setAttribute('class', options.class)
         }
@@ -66,7 +72,7 @@ var Forge = {
     buildInput: function (mold) {        
         let inputContainer = Forge.build({'dom':'div', 'class': 'form-group'});
         let titleLabel  = Forge.build({'dom':'label', 'text': mold.label});        
-        let textInput   = Forge.build({'dom': mold.type, 'class': 'form-control', 'placeholder': mold.placeholder});
+        let textInput   = Forge.build({'dom': mold.type, 'id': mold.id, 'class': 'form-control', 'placeholder': mold.placeholder});
 
         inputContainer.appendChild(titleLabel);
         inputContainer.appendChild(textInput);

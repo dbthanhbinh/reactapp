@@ -6,4 +6,4 @@ mongoose.connect('mongodb://localhost/reactapp')
   .then(() =>  console.log('connection succesful'))
   .catch((err) => console.error(err));
 
-  module.exports = mongoose;
+module.exports = mongoose;

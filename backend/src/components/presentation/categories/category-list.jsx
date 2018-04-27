@@ -19,7 +19,7 @@ class CategoriesList extends Component{
                     <div className="box">
                     <div className="box-header">
                         <h3 className="box-title">{this.state.name}</h3>
-                        <BoxTools buildData="renderAddCategory" />
+                        <BoxTools buildData="AddEditCategory" />
                     </div>
                     
                     <div className="box-body">
