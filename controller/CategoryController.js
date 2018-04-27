@@ -18,13 +18,21 @@ categoryController.delete = function(req, res) {
     console.log('user delete');
 };
 
-categoryController.create = function(req, res) {
-    model.create({ name: "book", description: 'fasdfa' }, function(err, result){
+categoryController.create = function(req, res) {    
+    let category = {
+        name: req.body.name, 
+        description: req.body.description
+    }
+    model.create(category, function(err, result){
         if(err) {
             console.log('Error', err);    
             return;
         }
-        console.log('create', result);
+        console.log('fff', result);
+        return res.send(JSON.stringify({
+            status: 200,
+            message: 'success'
+        }));
     });    
 };
 
