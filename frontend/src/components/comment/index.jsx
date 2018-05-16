@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import CommentService from './comment.service'
 import CommentItem from './comment.item'
 
+// CommentService.listing(data => {
+//     data.then(function(e) {
+//         console.log('data: ', e)
+//     })    
+// })
+
+CommentService.listing(data => {
+    console.log('data: ', data)   
+})
+
 class Comment extends Component {
 
     constructor (props) {
@@ -12,7 +22,7 @@ class Comment extends Component {
     }
     
     componentWillMount () {        
-        this.setState(Object.assign({}, this.state, {commentList: CommentService}))
+        this.setState(Object.assign({}, this.state, {commentList: []}))
     }
 
     render () {

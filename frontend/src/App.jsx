@@ -5,7 +5,7 @@ import logo from './logo.svg';
 import './semantic/dist/semantic.min.css';
 import './App.css';
 
-import Comment from './components/containers/comment'
+import Comment from './components/comment'
 
 class App extends Component {
     constructor(props) {
