@@ -22,6 +22,21 @@ const API = {
             // Error :(
             console.log('Error!', err)    
         });
+    },
+
+    post(endPoint, params, callback) {        
+       let postOptions = {
+           method: 'post',
+           body: JSON.stringify(params)
+       }
+
+        fetch(API.baseUrl + endPoint, postOptions)
+        .then(function(response) {            
+            return callback(null, response.json())
+        }).catch(function(err) {
+            // Error :(
+            console.log('API Error!', err)    
+        });
     }
 }
 

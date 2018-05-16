@@ -23,13 +23,17 @@ commentController.view = function(req, res){
 };
 
 commentController.create = function(req, res){
-    let Obj = {
-        name: 'dbthanhbinh',
-        content: 'this test comment'
-    };
-    model.create(Obj, function(err, data){        
-        return res.send(resMessage.message(err, data, 'view'));
-    }); 
+    console.log('Req body: ', req.body)
+
+
+    // let Obj = {
+    //     name: 'dbthanhbinh',
+    //     content: 'this test comment'
+    // };
+    
+    // model.create(Obj, function(err, data){        
+    //     return res.send(resMessage.message(err, data, 'view'));
+    // }); 
 };
 
 module.exports = commentController;
