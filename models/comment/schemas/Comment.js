@@ -1,7 +1,7 @@
-const mongoose = require('../../../connecting');
-const Schema = mongoose.Schema;
+// const mongoose = require('../../../connecting');
+// const Schema = mongoose.Schema;
 
-var CommentSchema = new Schema({
+const CommentSchema = {
     name: {
         type: String,
         require: true
@@ -10,7 +10,20 @@ var CommentSchema = new Schema({
         type: String,
         require: true
     }
+}
 
-}, { collection: 'comments' });
+module.exports = CommentSchema
 
-module.exports = mongoose.model('Comment', CommentSchema);
+// var CommentSchema = new Schema({
+//     name: {
+//         type: String,
+//         require: true
+//     },
+//     content: {
+//         type: String,
+//         require: true
+//     }
+
+// }, { collection: 'comments' });
+
+// module.exports = mongoose.model('Comment', CommentSchema);

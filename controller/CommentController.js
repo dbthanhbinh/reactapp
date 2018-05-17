@@ -1,5 +1,5 @@
 'use strict';
-var model = require ('../models/comment');
+var { model, schemaValidation } = require ('../models/comment');
 var resMessage = require('../providers/commons/resMessage');
 var commentController = {};
 
@@ -25,6 +25,7 @@ commentController.view = function(req, res){
 commentController.create = function(req, res){
     console.log('Req body: ', req.body)
 
+    console.log(schemaValidation)
 
     // let Obj = {
     //     name: 'dbthanhbinh',

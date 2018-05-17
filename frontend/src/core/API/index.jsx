@@ -25,9 +25,10 @@ const API = {
     },
 
     post(endPoint, params, callback) {        
-       let postOptions = {
-           method: 'post',
-           body: JSON.stringify(params)
+       let postOptions = {           
+            body: JSON.stringify(params),
+            method: 'POST',            
+            headers: {"Content-Type": "application/json"}
        }
 
         fetch(API.baseUrl + endPoint, postOptions)

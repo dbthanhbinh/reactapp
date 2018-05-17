@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/dbthanhbinh/reactapp#readme",
   "dependencies": {
+    "ajv": "^6.5.0",
     "eslint": "^4.19.1",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.1",
