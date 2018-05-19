@@ -1,5 +1,5 @@
 const Ajv = require('ajv')
-const ajv = new Ajv()
+const ajv = new Ajv({allErrors: true})
 class schemaValidation {
     constructor (schema) {
         this.schema = schema
@@ -7,11 +7,11 @@ class schemaValidation {
 
     compile (newSchema, callback) {
         const validate = ajv.compile(this.schema)
-        const valid = validate(newSchema)
-        if (valid) {
+        const valid = validate(newSchema)        
+        if (!valid) {
             return callback(validate.errors)
         }
-        return callback(null, true)
+        return callback(null, newSchema, true)
     }    
 }
 

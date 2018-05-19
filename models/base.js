@@ -6,7 +6,7 @@ class BaseModel {
     }
 
     find(query, done){
-        logger.info('Runing query: ', query);
+        logger.info('Runing find: ', query);
         this.model.find(query, function(err, data) {
             if(err){
                 return done(err, null);
@@ -24,7 +24,8 @@ class BaseModel {
         });
     }
 
-    create(Obj, done){        
+    create(Obj, done){       
+        logger.info('Begining create data..'); 
         this.model.create(Obj, function(err, data) {
             if(err){
                 return done(err, null);
