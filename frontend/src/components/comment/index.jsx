@@ -18,8 +18,17 @@ class Comment extends Component {
         }
     }
 
-    hanldFormSubmitCallback (err, result) {
-
+    hanldFormSubmitCallback = (e) => {        
+        CommentService.listing ((data) => {
+            let callbackData = {
+                commentList: data.dataResult,
+                formEdit: {
+                    email: '', // reset value
+                    content: '' // reset value
+                }
+            }
+            this.setState(Object.assign({}, this.state, callbackData))            
+        })
     }
 
     hanldFormSubmit = (e) => {        
@@ -29,8 +38,7 @@ class Comment extends Component {
             email: email,
             content: content
         }
-        CommentService.create(data, this.hanldFormSubmitCallback)
-        // console.log(this.state.formEdit)
+        CommentService.create(data, this.hanldFormSubmitCallback)        
     }
 
     handleChange = (e) => {        
@@ -39,8 +47,7 @@ class Comment extends Component {
         this.setState(Object.assign({}, this.state, state))
     }
 
-    componentWillMount () {     
-        // Show list of comment           
+    componentWillMount () {       
         CommentService.listing ((e) => {
             this.setState(Object.assign({}, this.state, {commentList: e.dataResult}))            
         })

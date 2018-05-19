@@ -3,12 +3,13 @@
 
 const CommentSchema = {
     name: {
-        type: String,
-        require: true
+        type: String
+    },
+    email: {
+        type: String
     },
     content: {
-        type: String,
-        require: true
+        type: String
     }
 }
 
