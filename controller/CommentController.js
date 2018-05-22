@@ -1,9 +1,12 @@
 'use strict';
 var { model, schemaValidation } = require ('../models/comment');
+var _ = require('lodash')
+var async = require('async')
 var resMessage = require('../providers/commons/resMessage');
 var async = require('async')
 var commentController = {};
 
+var commentController = {};
 commentController.list = function(req, res) {
     let query = {};
     model.find(query, function(err, data){                
@@ -23,6 +26,11 @@ commentController.view = function(req, res){
     }); 
 };
 
+/**
+ * POST: create data
+ * @param {*} req 
+ * @param {*} res 
+ */
 commentController.create = function(req, res){
     const formData = req.body        
 

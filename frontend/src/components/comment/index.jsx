@@ -1,6 +1,24 @@
 import React, { Component } from 'react'
 import CommentService from './comment.service'
 import CommentItem from './comment.item'
+import Validation from '../../core/validation'
+
+const Schema = {    
+    email: {
+        type: "Email",
+        minLength: 6,
+        maxLength: 100,
+        required: true,
+        allowHtml: false
+    },
+    content: {
+        type: "String",
+        minLength: 6,
+        maxLength: 100,
+        required: true,
+        allowHtml: false
+    }
+}
 
 class Comment extends Component {
 
@@ -11,6 +29,7 @@ class Comment extends Component {
 
         this.state = {
             commentList: [],
+            formValidation: [],
             formEdit: {
                 email: '',
                 content: ''
@@ -18,19 +37,34 @@ class Comment extends Component {
         }
     }
 
-    hanldFormSubmitCallback (err, result) {
-
+    hanldFormSubmitCallback = (e) => {        
+        CommentService.listing ((data) => {
+            let callbackData = {
+                commentList: data.dataResult,
+                formEdit: {
+                    email: '', // reset value
+                    content: '' // reset value
+                }
+            }
+            this.setState(Object.assign({}, this.state, callbackData))            
+        })
     }
 
-    hanldFormSubmit = (e) => {        
+    hanldFormSubmit = (e) => {
         e.preventDefault();
         const { email, content } = this.state.formEdit
         let data = {
             email: email,
             content: content
         }
-        CommentService.create(data, this.hanldFormSubmitCallback)
-        // console.log(this.state.formEdit)
+
+        Validation.validateForm(Schema, data, (err, valid) => {
+            if (err) {
+
+            }
+
+            CommentService.create(data, this.hanldFormSubmitCallback)
+        })
     }
 
     handleChange = (e) => {        
@@ -39,8 +73,7 @@ class Comment extends Component {
         this.setState(Object.assign({}, this.state, state))
     }
 
-    componentWillMount () {     
-        // Show list of comment           
+    componentWillMount () {       
         CommentService.listing ((e) => {
             this.setState(Object.assign({}, this.state, {commentList: e.dataResult}))            
         })
@@ -57,10 +90,12 @@ class Comment extends Component {
                 })}                              
                 <form className="ui reply form" onSubmit = {this.hanldFormSubmit}>
                     <div className="field">
-                        <input type="text" name="email"  placeholder="Enter email.." value={email} onChange={this.handleChange} />                    
+                        <label className="error"> error </label>
+                        <input type="text" name="email"  placeholder="Enter email..(*)" value={email} onChange={this.handleChange} />                    
                     </div>
-                    <div className="field">                        
-                        <textarea name="content" placeholder="Enter comment.." value={content} onChange={this.handleChange} />
+                    <div className="field">                
+                        <label className=""> error </label>        
+                        <textarea name="content" placeholder="Enter comment..(*)" value={content} onChange={this.handleChange} />
                     </div>
                     <div className="ui blue labeled submit icon button">
                         <i className="icon edit"></i> <input type="submit" value="Submit" />

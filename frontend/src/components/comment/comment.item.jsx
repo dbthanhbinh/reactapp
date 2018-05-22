@@ -9,19 +9,19 @@ class CommentItem extends Component {
     }
 
     render() {
-        
+        let dataItem = this.props.data
         return (
             <div className="comment">
                 <a className="avatar">
-                    <img src={this.props.data.avatar} />
+                    <img alt="" src={dataItem.avatar} />
                 </a>
                 <div className="content">
-                    <a className="author">Matt</a>
+                    <a className="author">{dataItem.name}</a>
                     <div className="metadata">
                         <span className="date">Today at 5:42PM</span>
                     </div>
                     <div className="text">
-                        How artistic!
+                        {dataItem.content}
                     </div>
                     <div className="actions">
                         <a className="reply">Reply</a>
