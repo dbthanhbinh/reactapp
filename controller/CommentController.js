@@ -1,6 +1,7 @@
 'use strict';
 var { model, schemaValidation } = require ('../models/comment');
 var resMessage = require('../providers/commons/resMessage');
+var async = require('async')
 var commentController = {};
 
 commentController.list = function(req, res) {
@@ -23,18 +24,35 @@ commentController.view = function(req, res){
 };
 
 commentController.create = function(req, res){
-    console.log('Req body: ', req.body)
+    const formData = req.body        
 
-    console.log(schemaValidation)
-
-    // let Obj = {
-    //     name: 'dbthanhbinh',
-    //     content: 'this test comment'
-    // };
+    const Obj = {
+        name: formData.name,
+        content: formData.content
+    };
     
     // model.create(Obj, function(err, data){        
     //     return res.send(resMessage.message(err, data, 'view'));
     // }); 
+    
+    async.waterfall([validateData, createData], (err, result) => {
+
+    })
+
+    function validateData (Obj, callback) {
+        console.log ('fsffa: ', Obj)    
+        schemaValidation.compile(Obj, (err, valid) => {
+            if (err) {
+                callback(err)
+            }
+            console.log('fasdf', valid);
+        })
+    }
+
+    function createData(Obj, valid, callback) {
+        console.log ('formData: ', Obj)
+        console.log ('valid: ', valid)
+    }
 };
 
 module.exports = commentController;
