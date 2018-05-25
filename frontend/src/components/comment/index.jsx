@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CommentService from './comment.service'
 import CommentItem from './comment.item'
-import Validation from '../../core/validation'
+import ValidationForm from '../../core/validation'
 
 const Schema = {    
     email: {
@@ -58,7 +58,7 @@ class Comment extends Component {
             content: content
         }
 
-        Validation.validateForm(Schema, data, (err, valid) => {
+        ValidationForm.validateForm(Schema, data, (err, valid) => {
             if (err) {
 
             }

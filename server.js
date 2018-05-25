@@ -14,5 +14,6 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.use('/' + apiUri, middlewares.setAllowControl(), Api);
+app.use('/', routes);
 
 module.exports = app;

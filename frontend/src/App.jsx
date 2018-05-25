@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Header, Container } from 'semantic-ui-react'
 
-import logo from './logo.svg';
-import './semantic/dist/semantic.min.css';
-import './App.css';
+import logo from './logo.svg'
+import './semantic/dist/semantic.min.css'
+import './App.css'
 
 import Comment from './components/comment'
+
+import Products from './components/products'
 
 class App extends Component {
     constructor(props) {
@@ -15,8 +17,8 @@ class App extends Component {
         return (
             <Container style={{ marginTop: '3em' }}>
                 <Header as='h1'>Theming Examples</Header>
-
-                <Comment />
+                <Products />
+                {/* <Comment /> */}
             </Container>
         );
     }
